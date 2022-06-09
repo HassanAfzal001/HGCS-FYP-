@@ -7,28 +7,29 @@ import { Link } from "react-router-dom";
 import { Typography } from "@material-ui/core";
 
 const ConfirmAppointment = ({ history }) => {
-  const { shippingInfo, cartItems } = useSelector((state) => state.cart);
+  const { bookingInfo, selectionItems } = useSelector((state) => state.selection);
   const { user } = useSelector((state) => state.user);
 
-  const subtotal = cartItems.reduce(
-    (acc, item) => acc + item.quantity * item.price,
+  const subtotal = selectionItems.reduce(
+    (acc, item) => acc + (item.quantity * item.fee),
     0
   );
 
-  const shippingCharges = subtotal > 1000 ? 0 : 200;
+  //subtotal > 1000 ? 0 : into below statement
+  const bookingCharges =  200;
 
-  const tax = subtotal * 0.18;
+  const tax = bookingCharges * 0.11;
 
-  const totalPrice = subtotal + tax + shippingCharges;
+  const totalFee =  tax + bookingCharges;
 
-  const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state}, ${shippingInfo.pinCode}, ${shippingInfo.country}`;
+  const address = `${bookingInfo.address}, ${bookingInfo.city}, ${bookingInfo.state}, ${bookingInfo.pinCode}, ${bookingInfo.country}`;
 
   const proceedToPayment = () => {
     const data = {
       subtotal,
-      shippingCharges,
+      bookingCharges,
       tax,
-      totalPrice,
+      totalFee,
     };
 
     sessionStorage.setItem("appointmentInfo", JSON.stringify(data));
@@ -42,36 +43,40 @@ const ConfirmAppointment = ({ history }) => {
       <CheckoutSteps activeStep={1} />
       <div className="confirmAppointmentPage">
         <div>
-          <div className="confirmshippingArea">
-            <Typography>Shipping Info</Typography>
-            <div className="confirmshippingAreaBox">
+          <div className="confirmbookingArea">
+            <Typography>Booking Info</Typography>
+            <div className="confirmbookingAreaBox">
               <div>
                 <p>Name:</p>
                 <span>{user.name}</span>
               </div>
               <div>
                 <p>Phone:</p>
-                <span>{shippingInfo.phoneNo}</span>
+                <span>{bookingInfo.phoneNo}</span>
               </div>
               <div>
                 <p>Address:</p>
                 <span>{address}</span>
               </div>
+              <div>
+                <p>Time Slot:</p>
+                <span>{bookingInfo.time}</span>
+              </div>
             </div>
           </div>
-          <div className="confirmCartItems">
-            <Typography>Your Cart Items:</Typography>
-            <div className="confirmCartItemsContainer">
-              {cartItems &&
-                cartItems.map((item) => (
+          <div className="confirmSelectionItems">
+            <Typography>Your Selection Items:</Typography>
+            <div className="confirmSelectionItemsContainer">
+              {selectionItems &&
+                selectionItems.map((item) => (
                   <div key={item.doctor}>
                     <img src={item.image} alt="Doctor" />
                     <Link to={`/doctor/${item.doctor}`}>
                       {item.name}
                     </Link>{" "}
                     <span>
-                      {item.quantity} X ₹{item.price} ={" "}
-                      <b>₹{item.price * item.quantity}</b>
+                      {item.quantity} X Rs  {item.fee} ={" "}
+                      <b>Rs  {item.fee * item.quantity}</b>
                     </span>
                   </div>
                 ))}
@@ -84,16 +89,16 @@ const ConfirmAppointment = ({ history }) => {
             <Typography>Appointment Summary</Typography>
             <div>
               <div>
-                <p>Subtotal:</p>
-                <span>₹{subtotal}</span>
+                {/* <p>Subtotal:</p>
+                <span>Rs  {subtotal}</span>
               </div>
-              <div>
-                <p>Shipping Charges:</p>
-                <span>₹{shippingCharges}</span>
+              <div> */}
+                <p>Booking Charges:</p>
+                <span>Rs  {bookingCharges}</span>
               </div>
               <div>
                 <p>GST:</p>
-                <span>₹{tax}</span>
+                <span>Rs {tax}</span>
               </div>
             </div>
 
@@ -101,7 +106,7 @@ const ConfirmAppointment = ({ history }) => {
               <p>
                 <b>Total:</b>
               </p>
-              <span>{totalPrice}</span>
+              <span>Rs {totalFee}</span>
             </div>
 
             <button onClick={proceedToPayment}>Proceed To Payment</button>

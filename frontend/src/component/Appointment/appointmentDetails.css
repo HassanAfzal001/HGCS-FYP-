@@ -18,7 +18,7 @@
 }
 
 .appointmentDetailsContainerBox,
-.appointmentDetailsCartItemsContainer {
+.appointmentDetailsSelectionItemsContainer {
   margin: 2vmax;
 }
 
@@ -37,34 +37,34 @@
   color: #575757;
 }
 
-.appointmentDetailsCartItems > p {
+.appointmentDetailsSelectionItems > p {
   font: 400 1.8vmax "Roboto";
 }
 
-.appointmentDetailsCartItems {
+.appointmentDetailsSelectionItems {
   padding: 2vmax 5vmax;
   border-top: 1px solid rgba(0, 0, 0, 0.164);
 }
 
-.appointmentDetailsCartItemsContainer > div {
+.appointmentDetailsSelectionItemsContainer > div {
   display: flex;
   font: 400 1vmax "Roboto";
   align-items: center;
   margin: 2vmax 0;
 }
 
-.appointmentDetailsCartItemsContainer > div > img {
+.appointmentDetailsSelectionItemsContainer > div > img {
   width: 3vmax;
 }
 
-.appointmentDetailsCartItemsContainer > div > a {
+.appointmentDetailsSelectionItemsContainer > div > a {
   color: #575757;
   margin: 0 2vmax;
   width: 60%;
   text-decoration: none;
 }
 
-.appointmentDetailsCartItemsContainer > div > span {
+.appointmentDetailsSelectionItemsContainer > div > span {
   font: 100 1vmax "Roboto";
   color: #5e5e5e;
 }
@@ -85,25 +85,25 @@
     font: 100 4vw "Roboto";
   }
 
-  .appointmentDetailsCartItems > p {
+  .appointmentDetailsSelectionItems > p {
     font: 400 6vw "Roboto";
   }
 
-  .appointmentDetailsCartItemsContainer > div {
+  .appointmentDetailsSelectionItemsContainer > div {
     font: 400 4vw "Roboto";
     margin: 4vw 0;
   }
 
-  .appointmentDetailsCartItemsContainer > div > img {
+  .appointmentDetailsSelectionItemsContainer > div > img {
     width: 10vw;
   }
 
-  .appointmentDetailsCartItemsContainer > div > a {
+  .appointmentDetailsSelectionItemsContainer > div > a {
     margin: 2vw;
     width: 30%;
   }
 
-  .appointmentDetailsCartItemsContainer > div > span {
+  .appointmentDetailsSelectionItemsContainer > div > span {
     font: 100 4vw "Roboto";
   }
 }

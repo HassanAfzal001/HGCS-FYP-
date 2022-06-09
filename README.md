@@ -4,10 +4,10 @@
 
     # Install Dependencies
 
-    **For Backend** - `npm i`
-
-    **For Frontend** - `cd frontend` ` npm i`
-
+    **For Backend** - `yarn install`
+    **For running backend** - `yarn run dev`
+    **For Frontend** - `cd frontend` ` yarn install`
+    **For running frontend** - `yarn start`
     ## Env Variables
 
     Make Sure to Create a config.env file in backend/config directory and add appropriate variables in order to use the app.

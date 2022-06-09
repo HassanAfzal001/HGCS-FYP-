@@ -26,7 +26,7 @@ const Doctors = ({ match }) => {
   const alert = useAlert();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [price, setPrice] = useState([0, 25000]);
+  const [fee, setFee] = useState([0, 25000]);
   const [category, setCategory] = useState("");
 
   const [ratings, setRatings] = useState(0);
@@ -46,8 +46,8 @@ const Doctors = ({ match }) => {
     setCurrentPage(e);
   };
 
-  const priceHandler = (event, newPrice) => {
-    setPrice(newPrice);
+  const feeHandler = (event, newFee) => {
+    setFee(newFee);
   };
   let count = filteredDoctorsCount;
 
@@ -57,8 +57,8 @@ const Doctors = ({ match }) => {
       dispatch(clearErrors());
     }
 
-    dispatch(getDoctor(keyword, currentPage, price, category, ratings));
-  }, [dispatch, keyword, currentPage, price, category, ratings, alert, error]);
+    dispatch(getDoctor(keyword, currentPage, fee, category, ratings));
+  }, [dispatch, keyword, currentPage, fee, category, ratings, alert, error]);
 
   return (
     <Fragment>
@@ -77,10 +77,10 @@ const Doctors = ({ match }) => {
           </div>
 
           <div className="filterBox">
-            <Typography>Price</Typography>
+            <Typography>Fee</Typography>
             <Slider
-              value={price}
-              onChange={priceHandler}
+              value={fee}
+              onChange={feeHandler}
               valueLabelDisplay="auto"
               aria-labelledby="range-slider"
               min={0 || "Free"}

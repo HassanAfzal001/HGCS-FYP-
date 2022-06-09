@@ -10,10 +10,10 @@ const doctorSchema = mongoose.Schema({
     type: String,
     required: [true, "Please Enter Doctor Description"],
   },
-  price: {
+  fee: {
     type: Number,
-    required: [true, "Please Enter doctor Price"],
-    maxLength: [8, "Price cannot exceed 8 characters"],
+    required: [true, "Please Enter doctor Fee"],
+    maxLength: [8, "Fee cannot exceed 8 characters"],
   },
   ratings: {
     type: Number,

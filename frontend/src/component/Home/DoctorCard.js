@@ -19,7 +19,7 @@ const DoctorCard = ({ doctor }) => {
           ({doctor.numOfReviews} Reviews)
         </span>
       </div>
-      <span>{`Rs ${doctor.price}`}</span>
+      <span>{`Rs ${doctor.fee}`}</span>
     </Link>
   );
 };

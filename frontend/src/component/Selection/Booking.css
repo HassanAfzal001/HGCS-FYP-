@@ -1,4 +1,4 @@
-.shippingContainer {
+.bookingContainer {
   width: 100vw;
   max-width: 100%;
   display: flex;
@@ -7,7 +7,7 @@
   flex-direction: column;
 }
 
-.shippingBox {
+.bookingBox {
   background-color: white;
   width: 25vw;
   height: 90vh;
@@ -15,7 +15,7 @@
   overflow: hidden;
 }
 
-.shippingHeading {
+.bookingHeading {
   text-align: center;
   color: rgba(0, 0, 0, 0.664);
   font: 400 1.3vmax "Roboto";
@@ -25,7 +25,7 @@
   margin: auto;
 }
 
-.shippingForm {
+.bookingForm {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,14 +36,14 @@
   transition: all 0.5s;
 }
 
-.shippingForm > div {
+.bookingForm > div {
   display: flex;
   width: 100%;
   align-items: center;
 }
 
-.shippingForm > div > input,
-.shippingForm > div > select {
+.bookingForm > div > input,
+.bookingForm > div > select {
   padding: 1vmax 4vmax;
   padding-right: 1vmax;
   width: 100%;
@@ -54,14 +54,14 @@
   outline: none;
 }
 
-.shippingForm > div > svg {
+.bookingForm > div > svg {
   position: absolute;
   transform: translateX(1vmax);
   font-size: 1.6vmax;
   color: rgba(0, 0, 0, 0.623);
 }
 
-.shippingBtn {
+.bookingBtn {
   border: none;
   background-color: tomato;
   color: white;
@@ -74,37 +74,37 @@
   margin: 2vmax;
 }
 
-.shippingBtn:hover {
+.bookingBtn:hover {
   background-color: rgb(179, 66, 46);
 }
 
 @media screen and (max-width: 600px) {
-  .shippingBox {
+  .bookingBox {
     width: 100vw;
     height: 95vh;
   }
 
-  .shippingHeading {
+  .bookingHeading {
     font: 400 6vw "Roboto";
     padding: 5vw;
   }
 
-  .shippingForm {
+  .bookingForm {
     padding: 11vw;
   }
 
-  .shippingForm > div > input,
-  .shippingForm > div > select {
+  .bookingForm > div > input,
+  .bookingForm > div > select {
     padding: 5vw 10vw;
     font: 300 4vw cursive;
   }
 
-  .shippingForm > div > svg {
+  .bookingForm > div > svg {
     font-size: 6vw;
     transform: translateX(3vw);
   }
 
-  .shippingBtn {
+  .bookingBtn {
     font: 300 4vw "Roboto";
     padding: 4vw;
   }

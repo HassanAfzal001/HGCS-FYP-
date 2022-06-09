@@ -29,7 +29,7 @@ const UpdateDoctor = ({ history, match }) => {
   } = useSelector((state) => state.doctor);
 
   const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
+  const [fee, setFee] = useState(0);
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [Stock, setStock] = useState(0);
@@ -55,7 +55,7 @@ const UpdateDoctor = ({ history, match }) => {
     } else {
       setName(doctor.name);
       setDescription(doctor.description);
-      setPrice(doctor.price);
+      setFee(doctor.fee);
       setCategory(doctor.category);
       setStock(doctor.Stock);
       setOldImages(doctor.images);
@@ -92,7 +92,7 @@ const UpdateDoctor = ({ history, match }) => {
     const myForm = new FormData();
 
     myForm.set("name", name);
-    myForm.set("price", price);
+    myForm.set("fee", fee);
     myForm.set("description", description);
     myForm.set("category", category);
     myForm.set("Stock", Stock);
@@ -151,10 +151,10 @@ const UpdateDoctor = ({ history, match }) => {
               <AttachMoneyIcon />
               <input
                 type="number"
-                placeholder="Price"
+                placeholder="Fee"
                 required
-                onChange={(e) => setPrice(e.target.value)}
-                value={price}
+                onChange={(e) => setFee(e.target.value)}
+                value={fee}
               />
             </div>
 

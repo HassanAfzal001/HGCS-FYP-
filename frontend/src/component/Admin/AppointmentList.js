@@ -113,7 +113,7 @@ const AppointmentList = ({ history }) => {
       rows.push({
         id: item._id,
         itemsQty: item.appointmentItems.length,
-        amount: item.totalPrice,
+        amount: item.totalFee,
         status: item.appointmentStatus,
       });
     });

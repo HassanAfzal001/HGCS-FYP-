@@ -11,7 +11,7 @@ import ReviewCard from "./ReviewCard.js";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
 import MetaData from "../layout/MetaData";
-import { addItemsToCart } from "../../actions/cartAction";
+import { addItemsToSelection } from "../../actions/selectionAction";
 import {
   Dialog,
   DialogActions,
@@ -60,9 +60,9 @@ const DoctorDetails = ({ match }) => {
     setQuantity(qty);
   };
 
-  const addToCartHandler = () => {
-    dispatch(addItemsToCart(match.params.id, quantity));
-    alert.success("Item Added To Cart");
+  const addToSelectionHandler = () => {
+    dispatch(addItemsToSelection(match.params.id, quantity));
+    alert.success("Item Added To Selection");
   };
 
   const submitReviewToggle = () => {
@@ -134,7 +134,7 @@ const DoctorDetails = ({ match }) => {
                 </span>
               </div>
               <div className="detailsBlock-3">
-                <h1>{`₹${doctor.price}`}</h1>
+                <h1>{`Rs  ${doctor.fee}`}</h1>
                 <div className="detailsBlock-3-1">
                   <div className="detailsBlock-3-1-1">
                     <button onClick={decreaseQuantity}>-</button>
@@ -143,9 +143,9 @@ const DoctorDetails = ({ match }) => {
                   </div>
                   <button
                     disabled={doctor.Stock < 1 ? true : false}
-                    onClick={addToCartHandler}
+                    onClick={addToSelectionHandler}
                   >
-                    Add to Cart
+                    Add to Selection
                   </button>
                 </div>
 

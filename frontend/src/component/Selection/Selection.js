@@ -1,22 +1,22 @@
 import React, { Fragment } from "react";
-import "./Cart.css";
-import CartItemCard from "./CartItemCard";
+import "./Selection.css";
+import SelectionItemCard from "./SelectionItemCard";
 import { useSelector, useDispatch } from "react-redux";
-import { addItemsToCart, removeItemsFromCart } from "../../actions/cartAction";
+import { addItemsToSelection, removeItemsFromSelection } from "../../actions/selectionAction";
 import { Typography } from "@material-ui/core";
 import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
 import { Link } from "react-router-dom";
 
-const Cart = ({ history }) => {
+const Selection = ({ history }) => {
   const dispatch = useDispatch();
-  const { cartItems } = useSelector((state) => state.cart);
+  const { selectionItems } = useSelector((state) => state.selection);
 
   const increaseQuantity = (id, quantity, stock) => {
     const newQty = quantity + 1;
     if (stock <= quantity) {
       return;
     }
-    dispatch(addItemsToCart(id, newQty));
+    dispatch(addItemsToSelection(id, newQty));
   };
 
   const decreaseQuantity = (id, quantity) => {
@@ -24,40 +24,40 @@ const Cart = ({ history }) => {
     if (1 >= quantity) {
       return;
     }
-    dispatch(addItemsToCart(id, newQty));
+    dispatch(addItemsToSelection(id, newQty));
   };
 
-  const deleteCartItems = (id) => {
-    dispatch(removeItemsFromCart(id));
+  const deleteSelectionItems = (id) => {
+    dispatch(removeItemsFromSelection(id));
   };
 
   const checkoutHandler = () => {
-    history.push("/login?redirect=shipping");
+    history.push("/login?redirect=booking");
   };
 
   return (
     <Fragment>
-      {cartItems.length === 0 ? (
-        <div className="emptyCart">
+      {selectionItems.length === 0 ? (
+        <div className="emptySelection">
           <RemoveShoppingCartIcon />
 
-          <Typography>No Doctor in Your Cart</Typography>
+          <Typography>No Doctor in Your Selection</Typography>
           <Link to="/doctors">View Doctors</Link>
         </div>
       ) : (
         <Fragment>
-          <div className="cartPage">
-            <div className="cartHeader">
+          <div className="selectionPage">
+            <div className="selectionHeader">
               <p>Doctor</p>
               <p>Quantity</p>
               <p>Subtotal</p>
             </div>
 
-            {cartItems &&
-              cartItems.map((item) => (
-                <div className="cartContainer" key={item.doctor}>
-                  <CartItemCard item={item} deleteCartItems={deleteCartItems} />
-                  <div className="cartInput">
+            {selectionItems &&
+              selectionItems.map((item) => (
+                <div className="selectionContainer" key={item.doctor}>
+                  <SelectionItemCard item={item} deleteSelectionItems={deleteSelectionItems} />
+                  <div className="selectionInput">
                     <button
                       onClick={() =>
                         decreaseQuantity(item.doctor, item.quantity)
@@ -78,18 +78,18 @@ const Cart = ({ history }) => {
                       +
                     </button>
                   </div>
-                  <p className="cartSubtotal">{`Rs${
-                    item.price * item.quantity
+                  <p className="selectionSubtotal">{`Rs${
+                    item.fee * item.quantity
                   }`}</p>
                 </div>
               ))}
 
-            <div className="cartGrossProfit">
+            <div className="selectionGrossProfit">
               <div></div>
-              <div className="cartGrossProfitBox">
+              <div className="selectionGrossProfitBox">
                 <p>Gross Total</p>
-                <p>{`Rs ${cartItems.reduce(
-                  (acc, item) => acc + item.quantity * item.price,
+                <p>{`Rs ${selectionItems.reduce(
+                  (acc, item) => acc + item.quantity * item.fee,
                   0
                 )}`}</p>
               </div>
@@ -105,4 +105,4 @@ const Cart = ({ history }) => {
   );
 };
 
-export default Cart;
+export default Selection;

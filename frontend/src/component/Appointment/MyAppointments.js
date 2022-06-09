@@ -72,7 +72,7 @@ const MyAppointments = () => {
         itemsQty: item.appointmentItems.length,
         id: item._id,
         status: item.appointmentStatus,
-        amount: item.totalPrice,
+        amount: item.totalFee,
       });
     });
 

@@ -37,7 +37,7 @@ const Dashboard = () => {
   let totalAmount = 0;
   appointments &&
     appointments.forEach((item) => {
-      totalAmount += item.totalPrice;
+      totalAmount += item.totalFee;
     });
 
   const lineState = {
@@ -74,7 +74,7 @@ const Dashboard = () => {
         <div className="dashboardSummary">
           <div>
             <p>
-              Total Amount <br /> ₹{totalAmount}
+              Total Amount <br /> Rs  {totalAmount}
             </p>
           </div>
           <div className="dashboardSummaryBox2">

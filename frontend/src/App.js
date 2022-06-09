@@ -20,14 +20,14 @@ import UpdateProfile from "./component/User/UpdateProfile";
 import UpdatePassword from "./component/User/UpdatePassword";
 import ForgotPassword from "./component/User/ForgotPassword";
 import ResetPassword from "./component/User/ResetPassword";
-import Cart from "./component/Cart/Cart";
-import Shipping from "./component/Cart/Shipping";
-import ConfirmAppointment from "./component/Cart/ConfirmAppointment";
+import Selection from "./component/Selection/Selection";
+import Booking from "./component/Selection/Booking";
+import ConfirmAppointment from "./component/Selection/ConfirmAppointment";
 import axios from "axios";
-import Payment from "./component/Cart/Payment";
+import Payment from "./component/Selection/Payment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import AppointmentSuccess from "./component/Cart/AppointmentSuccess";
+import AppointmentSuccess from "./component/Selection/AppointmentSuccess";
 import MyAppointments from "./component/Appointment/MyAppointments";
 import AppointmentDetails from "./component/Appointment/AppointmentDetails";
 import Dashboard from "./component/Admin/Dashboard.js";
@@ -108,9 +108,9 @@ function App() {
 
         <Route exact path="/login" component={LoginSignUp} />
 
-        <Route exact path="/cart" component={Cart} />
+        <Route exact path="/selection" component={Selection} />
 
-        <ProtectedRoute exact path="/shipping" component={Shipping} />
+        <ProtectedRoute exact path="/booking" component={Booking} />
 
         <ProtectedRoute exact path="/success" component={AppointmentSuccess} />
 

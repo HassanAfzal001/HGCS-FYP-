@@ -69,8 +69,8 @@ const DoctorList = ({ history }) => {
     },
 
     {
-      field: "price",
-      headerName: "Price",
+      field: "fee",
+      headerName: "Fee",
       type: "number",
       minWidth: 270,
       flex: 0.5,
@@ -110,7 +110,7 @@ const DoctorList = ({ history }) => {
       rows.push({
         id: item._id,
         stock: item.Stock,
-        price: item.price,
+        fee: item.fee,
         name: item.name,
       });
     });

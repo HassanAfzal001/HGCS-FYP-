@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useRef } from "react";
-import CheckoutSteps from "../Cart/CheckoutSteps";
+import CheckoutSteps from "./CheckoutSteps";
 import { useSelector, useDispatch } from "react-redux";
 import MetaData from "../layout/MetaData";
 import { Typography } from "@material-ui/core";
@@ -28,21 +28,21 @@ const Payment = ({ history }) => {
   const elements = useElements();
   const payBtn = useRef(null);
 
-  const { shippingInfo, cartItems } = useSelector((state) => state.cart);
+  const { bookingInfo, selectionItems } = useSelector((state) => state.selection);
   const { user } = useSelector((state) => state.user);
   const { error } = useSelector((state) => state.newAppointment);
 
   const paymentData = {
-    amount: Math.round(appointmentInfo.totalPrice * 100),
+    amount: Math.round(appointmentInfo.totalFee * 100),
   };
 
   const appointment = {
-    shippingInfo,
-    appointmentItems: cartItems,
-    itemsPrice: appointmentInfo.subtotal,
-    taxPrice: appointmentInfo.tax,
-    shippingPrice: appointmentInfo.shippingCharges,
-    totalPrice: appointmentInfo.totalPrice,
+    bookingInfo,
+    appointmentItems: selectionItems,
+    itemsFee: appointmentInfo.subtotal,
+    taxFee: appointmentInfo.tax,
+    bookingFee: appointmentInfo.bookingCharges,
+    totalFee: appointmentInfo.totalFee,
   };
 
   const submitHandler = async (e) => {
@@ -73,11 +73,11 @@ const Payment = ({ history }) => {
             name: user.name,
             email: user.email,
             address: {
-              line1: shippingInfo.address,
-              city: shippingInfo.city,
-              state: shippingInfo.state,
-              postal_code: shippingInfo.pinCode,
-              country: shippingInfo.country,
+              line1: bookingInfo.address,
+              city: bookingInfo.city,
+              state: bookingInfo.state,
+              postal_code: bookingInfo.pinCode,
+              country: bookingInfo.country,
             },
           },
         },
@@ -136,7 +136,7 @@ const Payment = ({ history }) => {
 
           <input
             type="submit"
-            value={`Pay - ${appointmentInfo && appointmentInfo.totalPrice}`}
+            value={`Pay - ${appointmentInfo && appointmentInfo.totalFee}`}
             ref={payBtn}
             className="paymentFormBtn"
           />

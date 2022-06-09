@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
-import "./Shipping.css";
+import "./Booking.css";
 import { useSelector, useDispatch } from "react-redux";
-import { saveShippingInfo } from "../../actions/cartAction";
+import { saveBookingInfo } from "../../actions/selectionAction";
 import MetaData from "../layout/MetaData";
 import PinDropIcon from "@material-ui/icons/PinDrop";
 import HomeIcon from "@material-ui/icons/Home";
@@ -11,47 +11,48 @@ import PhoneIcon from "@material-ui/icons/Phone";
 import TransferWithinAStationIcon from "@material-ui/icons/TransferWithinAStation";
 import { Country, State } from "country-state-city";
 import { useAlert } from "react-alert";
-import CheckoutSteps from "../Cart/CheckoutSteps";
+import CheckoutSteps from "./CheckoutSteps";
 
-const Shipping = ({ history }) => {
+const Booking = ({ history }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
-  const { shippingInfo } = useSelector((state) => state.cart);
+  const { bookingInfo } = useSelector((state) => state.selection);
 
-  const [address, setAddress] = useState(shippingInfo.address);
-  const [city, setCity] = useState(shippingInfo.city);
-  const [state, setState] = useState(shippingInfo.state);
-  const [country, setCountry] = useState(shippingInfo.country);
-  const [pinCode, setPinCode] = useState(shippingInfo.pinCode);
-  const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
+  const [address, setAddress] = useState(bookingInfo.address);
+  const [city, setCity] = useState(bookingInfo.city);
+  const [state, setState] = useState(bookingInfo.state);
+  const [country, setCountry] = useState(bookingInfo.country);
+  const [pinCode, setPinCode] = useState(bookingInfo.pinCode);
+  const [phoneNo, setPhoneNo] = useState(bookingInfo.phoneNo);
+  const [time, setTime] = useState(bookingInfo.time);
 
-  const shippingSubmit = (e) => {
+  const bookingSubmit = (e) => {
     e.preventDefault();
 
-    if (phoneNo.length < 10 || phoneNo.length > 10) {
-      alert.error("Phone Number should be 10 digits Long");
+    if (phoneNo.length < 12 || phoneNo.length > 12) {
+      alert.error("Phone Number should be 12 digits Long with country code");
       return;
     }
     dispatch(
-      saveShippingInfo({ address, city, state, country, pinCode, phoneNo })
+      saveBookingInfo({ address, city, state, country, pinCode, phoneNo, time })
     );
     history.push("/appointment/confirm");
   };
 
   return (
     <Fragment>
-      <MetaData title="Shipping Details" />
+      <MetaData title="Booking Details" />
 
       <CheckoutSteps activeStep={0} />
 
-      <div className="shippingContainer">
-        <div className="shippingBox">
-          <h2 className="shippingHeading">Shipping Details</h2>
+      <div className="bookingContainer">
+        <div className="bookingBox">
+          <h2 className="bookingHeading">Booking Details</h2>
 
           <form
-            className="shippingForm"
+            className="bookingForm"
             encType="multipart/form-data"
-            onSubmit={shippingSubmit}
+            onSubmit={bookingSubmit}
           >
             <div>
               <HomeIcon />
@@ -99,6 +100,17 @@ const Shipping = ({ history }) => {
             </div>
 
             <div>
+              {/* <LocationCityIcon /> */}
+              <input
+                type="text"
+                placeholder="Time __ am/pm - __am/pm "
+                required
+                value={time}
+                onChange={(e) => setTime(e.target.value)}
+              />
+            </div>
+
+            <div>
               <PublicIcon />
 
               <select
@@ -139,7 +151,7 @@ const Shipping = ({ history }) => {
             <input
               type="submit"
               value="Continue"
-              className="shippingBtn"
+              className="bookingBtn"
               disabled={state ? false : true}
             />
           </form>
@@ -149,4 +161,4 @@ const Shipping = ({ history }) => {
   );
 };
 
-export default Shipping;
+export default Booking;

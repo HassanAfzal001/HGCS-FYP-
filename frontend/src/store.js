@@ -19,7 +19,7 @@ import {
   userReducer,
 } from "./reducers/userReducer";
 
-import { cartReducer } from "./reducers/cartReducer";
+import { selectionReducer } from "./reducers/selectionReducer";
 import {
   allAppointmentsReducer,
   myAppointmentsReducer,
@@ -34,7 +34,7 @@ const reducer = combineReducers({
   user: userReducer,
   profile: profileReducer,
   forgotPassword: forgotPasswordReducer,
-  cart: cartReducer,
+  selection: selectionReducer,
   newAppointment: newAppointmentReducer,
   myAppointments: myAppointmentsReducer,
   appointmentDetails: appointmentDetailsReducer,
@@ -50,12 +50,12 @@ const reducer = combineReducers({
 });
 
 let initialState = {
-  cart: {
-    cartItems: localStorage.getItem("cartItems")
-      ? JSON.parse(localStorage.getItem("cartItems"))
+  selection: {
+    selectionItems: localStorage.getItem("selectionItems")
+      ? JSON.parse(localStorage.getItem("selectionItems"))
       : [],
-    shippingInfo: localStorage.getItem("shippingInfo")
-      ? JSON.parse(localStorage.getItem("shippingInfo"))
+    bookingInfo: localStorage.getItem("bookingInfo")
+      ? JSON.parse(localStorage.getItem("bookingInfo"))
       : {},
   },
 };

@@ -57,7 +57,7 @@ const AppointmentDetails = ({ match }) => {
 
                 <div>
                   <p>Amount:</p>  
-                  <span>{appointment?.totalPrice && appointment?.totalPrice}</span>
+                  <span>{appointment?.totalFee && appointment?.totalFee}</span>
                 </div>
               </div>
 

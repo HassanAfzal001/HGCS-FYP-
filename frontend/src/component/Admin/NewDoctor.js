@@ -20,7 +20,7 @@ const NewDoctor = ({ history }) => {
   const { loading, error, success } = useSelector((state) => state.newProduct);
 
   const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
+  const [fee, setFee] = useState(0);
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [Stock, setStock] = useState(0);
@@ -56,7 +56,7 @@ const NewDoctor = ({ history }) => {
     const myForm = new FormData();
 
     myForm.set("name", name);
-    myForm.set("price", price);
+    myForm.set("fee", fee);
     myForm.set("description", description);
     myForm.set("category", category);
     myForm.set("Stock", Stock);
@@ -114,9 +114,9 @@ const NewDoctor = ({ history }) => {
               <AttachMoneyIcon />
               <input
                 type="number"
-                placeholder="Price"
+                placeholder="Fee"
                 required
-                onChange={(e) => setPrice(e.target.value)}
+                onChange={(e) => setFee(e.target.value)}
               />
             </div>
 

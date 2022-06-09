@@ -68,8 +68,8 @@ const ProcessAppointment = ({ history, match }) => {
               }}
             >
               <div>
-                <div className="confirmshippingArea">
-                  <Typography>Shipping Info</Typography>
+                <div className="confirmbookingArea">
+                  <Typography>Booking Info</Typography>
                   <div className="appointmentDetailsContainerBox">
                     <div>
                       <p>Name:</p>
@@ -78,14 +78,14 @@ const ProcessAppointment = ({ history, match }) => {
                     <div>
                       <p>Phone:</p>
                       <span>
-                        {appointment.shippingInfo && appointment.shippingInfo.phoneNo}
+                        {appointment.bookingInfo && appointment.bookingInfo.phoneNo}
                       </span>
                     </div>
                     <div>
                       <p>Address:</p>
                       <span>
-                        {appointment.shippingInfo &&
-                          `${appointment.shippingInfo.address}, ${appointment.shippingInfo.city}, ${appointment.shippingInfo.state}, ${appointment.shippingInfo.pinCode}, ${appointment.shippingInfo.country}`}
+                        {appointment.bookingInfo &&
+                          `${appointment.bookingInfo.address}, ${appointment.bookingInfo.city}, ${appointment.bookingInfo.state}, ${appointment.bookingInfo.pinCode}, ${appointment.bookingInfo.country}`}
                       </span>
                     </div>
                   </div>
@@ -110,7 +110,7 @@ const ProcessAppointment = ({ history, match }) => {
 
                     <div>
                       <p>Amount:</p>
-                      <span>{appointment.totalPrice && appointment.totalPrice}</span>
+                      <span>{appointment.totalFee && appointment.totalFee}</span>
                     </div>
                   </div>
 
@@ -129,9 +129,9 @@ const ProcessAppointment = ({ history, match }) => {
                     </div>
                   </div>
                 </div>
-                <div className="confirmCartItems">
-                  <Typography>Your Cart Items:</Typography>
-                  <div className="confirmCartItemsContainer">
+                <div className="confirmSelectionItems">
+                  <Typography>Your Selection Items:</Typography>
+                  <div className="confirmSelectionItemsContainer">
                     {appointment.appointmentItems &&
                       appointment.appointmentItems.map((item) => (
                         <div key={item.doctor}>
@@ -140,8 +140,8 @@ const ProcessAppointment = ({ history, match }) => {
                             {item.name}
                           </Link>{" "}
                           <span>
-                            {item.quantity} X ₹{item.price} ={" "}
-                            <b>₹{item.price * item.quantity}</b>
+                            {item.quantity} X Rs  {item.fee} ={" "}
+                            <b>Rs  {item.fee * item.quantity}</b>
                           </span>
                         </div>
                       ))}
